@@ -1,9 +1,6 @@
-/**
- * como.ritual · Reservas de cenas
- * Recibe el formulario de la landing y escribe una fila por reserva en esta hoja.
- *
- * Pasos de instalación: ver README.md (carpeta raíz).
- */
+// como.ritual - Reservas de cenas
+// Recibe el formulario de la landing y escribe una fila por reserva en esta hoja.
+// Pasos de instalacion: ver README.md
 
 var SHEET_NAME = 'Reservas';
 var SUMMARY_NAME = 'Resumen';
