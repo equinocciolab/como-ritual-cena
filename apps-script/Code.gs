@@ -47,23 +47,38 @@ function setup() {
   sh.setColumnWidth(6, 360);
   sh.setColumnWidth(3, 180);
 
+  buildSummary_(ss);
+}
+
+/** Reconstruye solo la pestaña Resumen (no toca las reservas). Útil si las fórmulas muestran #ERROR!. */
+function arreglarResumen() { buildSummary_(SpreadsheetApp.getActiveSpreadsheet()); }
+
+/** Escribe el Resumen probando coma y punto y coma, según la configuración regional de la hoja. */
+function buildSummary_(ss) {
   var rs = ss.getSheetByName(SUMMARY_NAME) || ss.insertSheet(SUMMARY_NAME);
-  rs.clear();
+  var stateCol = String.fromCharCode(64 + HEADERS.indexOf('Estado') + 1);
   var personasCol = String.fromCharCode(64 + HEADERS.indexOf('Personas') + 1);
-  var st = "Reservas!$" + colLetter + ":$" + colLetter;
+  var st = "Reservas!$" + stateCol + ":$" + stateCol;
   var pe = "Reservas!$" + personasCol + ":$" + personasCol;
-  rs.getRange('A1:B7').setValues([
-    ['Cupos totales', CAPACITY],
-    ['Confirmados (abonaron)', '=SUMIF(' + st + ',"Confirmada",' + pe + ')'],
-    ['Con abono sin confirmar', '=SUMIF(' + st + ',"Abonó",' + pe + ')'],
-    ['Interesadas (sin abono)', '=SUMIF(' + st + ',"Interesada",' + pe + ')'],
-    ['Lista de espera', '=SUMIF(' + st + ',"Lista de espera",' + pe + ')'],
-    ['Cupos libres', '=B1-B2-B3'],
-    ['Abonos por cobrar (COP)', '=SUMIFS(Reservas!$H:$H,' + st + ',"Interesada")']
-  ]);
+  var seps = [',', ';'];
+  for (var i = 0; i < seps.length; i++) {
+    var x = seps[i];
+    function sumif(label) { return '=SUMIF(' + st + x + '"' + label + '"' + x + pe + ')'; }
+    rs.clear();
+    rs.getRange('A1:B7').setValues([
+      ['Cupos totales', CAPACITY],
+      ['Confirmados (abonaron)', sumif('Confirmada')],
+      ['Con abono sin confirmar', sumif('Abonó')],
+      ['Interesadas (sin abono)', sumif('Interesada')],
+      ['Lista de espera', sumif('Lista de espera')],
+      ['Cupos libres', '=B1-B2-B3'],
+      ['Abonos por cobrar (COP)', '=SUMIFS(Reservas!$H:$H' + x + st + x + '"Interesada")']
+    ]);
+    SpreadsheetApp.flush();
+    if (rs.getRange('B2:B7').getDisplayValues().join(' ').indexOf('#') < 0) break;
+  }
   rs.getRange('A1:A7').setFontWeight('bold');
   rs.setColumnWidth(1, 240);
-  SpreadsheetApp.flush();
 }
 
 function rule_(label, color) { return { label: label, color: color }; }
