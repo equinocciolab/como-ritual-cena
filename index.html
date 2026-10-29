@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>como.ritual · Cena 14 de noviembre</title>
+<meta name="description" content="Reserva tu lugar en la cena Brujas, Chamanes y Maestros de como.ritual. Sábado 14 de noviembre, 11 puestos, Bogotá.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Playpen+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: banda verde con patrón de maíz arriba, luego una columna estrecha y cálida
+   (detalles de la mesa, formulario por comensal, confirmación) como una nota escrita a mano. */
+:root {
+  --bg: #fbf3d6;
+  --paper: #fbf3d6;
+  --fg: #3a1636;
+  --muted: #6d4a68;
+  --green: #1b4a25;
+  --green-ink: #fbf0c8;
+  --ochre: #cc9109;
+  --ochre-text: #8f6200;
+  --card: #fffaea;
+  --line: #e3d29b;
+  --field: #fffdf3;
+  --danger: #a3262a;
+  --font-display: "Kalam", "Comic Sans MS", cursive;
+  --font-body: "Playpen Sans", "Segoe Print", "Trebuchet MS", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11301a; --fg: #fbf0c8; --muted: #cdbf93; --green: #0b2411; --green-ink: #fbf0c8;
+    --ochre: #e0aa2b; --ochre-text: #e8b53c; --card: #194024; --line: #2f5a3a; --field: #11301a; --danger: #ff8d8f;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11301a; --fg: #fbf0c8; --muted: #cdbf93; --green: #0b2411; --green-ink: #fbf0c8;
+  --ochre: #e0aa2b; --ochre-text: #e8b53c; --card: #194024; --line: #2f5a3a; --field: #11301a; --danger: #ff8d8f;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.6;
+}
+a { color: inherit; }
+.wrap {
+  max-width: 680px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+section h2 { text-align: center; }
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; text-wrap: balance; margin: 0; }
+
+/* Hero: patrón real de ollas sobre verde + arco con la ilustración del cuenco */
+.hero {
+  background-color: var(--green); color: var(--green-ink);
+  background-image: linear-gradient(rgba(11,36,17,.22), rgba(11,36,17,.22)), url("assets/patron-ollas.jpg");
+  background-size: cover; background-position: center;
+}
+.hero .wrap { padding-block: 40px 48px; text-align: center; display: grid; gap: 14px; justify-items: center; }
+.fire { display: block; width: min(230px, 60vw); height: auto; margin: 6px 0 4px; filter: drop-shadow(0 0 10px rgba(11,36,17,.95)) drop-shadow(0 0 28px rgba(11,36,17,.9)); }
+.logo { display: block; width: min(300px, 74vw); height: auto; margin: 0 auto; }
+.brand { font-family: var(--font-display); font-weight: 700; font-size: clamp(2.6rem, 11vw, 4rem); line-height: 1; margin: 0; letter-spacing: .01em; }
+.tagline { font-family: var(--font-display); font-size: clamp(1.15rem, 4.4vw, 1.5rem); max-width: 28ch; margin: 0; text-wrap: balance; }
+.eyebrow { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; opacity: .85; margin: 0; }
+.hero-date { font-family: var(--font-display); font-weight: 700; font-size: 1.25rem; color: var(--ochre); margin: 6px 0 0; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font: 600 1rem var(--font-body); text-decoration: none; cursor: pointer;
+  background: var(--ochre); color: #2a1200; border: 2px solid var(--ochre);
+  padding: 12px 26px; border-radius: 999px; margin-top: 6px;
+}
+.btn:hover { filter: brightness(1.06); }
+.btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .linklike:focus-visible { outline: 3px solid var(--ochre); outline-offset: 2px; }
+.btn.ghost { background: transparent; color: var(--fg); border-color: var(--fg); }
+.btn[disabled] { opacity: .6; cursor: progress; }
+
+/* Secciones */
+section { padding-block: 40px 8px; }
+section::after { content: ""; display: block; clear: both; }
+h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); color: var(--ochre-text); margin-bottom: 14px; }
+p { margin: 0 0 14px; max-width: 60ch; }
+.lede { font-size: 1.05rem; }
+.facts { display: grid; gap: 0; margin: 22px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.facts div { display: grid; grid-template-columns: 9rem 1fr; gap: 4px 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.facts dt { font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.facts dd { margin: 0; min-width: 0; }
+.facts b { font-family: var(--font-display); font-size: 1.2rem; }
+.note { font-size: .9rem; color: var(--muted); }
+@media (max-width: 460px) { .facts div { grid-template-columns: 1fr; } }
+
+/* Formulario */
+form { display: grid; gap: 18px; margin-top: 6px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+label, legend { font-weight: 600; font-size: .95rem; }
+.hint { font-weight: 400; font-size: .85rem; color: var(--muted); }
+input, select, textarea {
+  font: inherit; color: var(--fg); background: var(--field);
+  border: 1.5px solid var(--line); border-radius: 12px; padding: 11px 13px; width: 100%; min-width: 0;
+}
+textarea { min-height: 78px; resize: vertical; }
+input:invalid:not(:placeholder-shown), textarea:invalid:not(:placeholder-shown) { border-color: var(--danger); }
+.guest { background: var(--card); border: 1.5px solid var(--line); border-radius: 16px; padding: 16px; display: grid; gap: 14px; }
+.guest h3 { font-size: 1.2rem; }
+.guests { display: grid; gap: 14px; }
+.summary { background: var(--green); color: var(--green-ink); border-radius: 16px; padding: 18px; display: grid; gap: 6px; }
+.summary .row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.summary .big { font-family: var(--font-display); font-size: 1.45rem; font-weight: 700; color: var(--ochre); }
+.summary small { opacity: .85; }
+.check { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; font-weight: 400; font-size: .88rem; color: var(--muted); }
+.check input { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--ochre); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.error { color: var(--danger); font-size: .92rem; margin: 0; }
+.ok { background: var(--card); border: 2px solid var(--ochre); border-radius: 18px; padding: 22px; display: grid; gap: 12px; }
+.ok h2 { margin: 0; }
+.msgbox { background: var(--field); border: 1.5px dashed var(--line); border-radius: 12px; padding: 12px 14px; font-size: .95rem; margin: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.demo { background: var(--card); border: 1.5px dashed var(--ochre); border-radius: 12px; padding: 10px 14px; font-size: .85rem; margin-bottom: 8px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+html { scroll-behavior: smooth; }
+
+/* Ilustraciones reales de la marca */
+.clear { clear: both; }
+.art { display: flex; justify-content: center; margin: 0 0 18px; }
+.art img { display: block; width: auto; height: 230px; max-width: 100%; object-fit: contain; }
+.art img.dk { display: none; }
+@media (max-width: 460px) { .art img { height: 200px; } }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .art.has-dk img.lt { display: none }
+  :root:not([data-theme="light"]) .art.has-dk img.dk { display: block }
+}
+:root[data-theme="dark"] .art.has-dk img.lt { display: none }
+:root[data-theme="dark"] .art.has-dk img.dk { display: block }
+
+.band { height: clamp(96px, 24vw, 170px); margin-top: 44px; background-size: cover; background-position: center; background-color: var(--green); }
+.band-maiz { background-image: url("assets/patron-maiz.jpg"); }
+.strip { height: 64px; border-radius: 12px; background: url("assets/patron-hojas.jpg") center / cover; }
+.foot { margin-top: 48px; padding: 56px 16px 60px; text-align: center; color: #fbf0c8;
+  background: linear-gradient(rgba(40,12,36,.38), rgba(40,12,36,.38)), url("assets/patron-llamas.jpg") center / cover; background-color: #4a1942; }
+.foot b { display: block; font-family: var(--font-display); font-size: 1.7rem; letter-spacing: .01em; }
+.foot .cat { margin: 14px auto 0; max-width: 34ch; font-size: .92rem; text-align: center; }
+.foot .cat a { color: #e8b53c; }
+.foot span { font-size: .85rem; letter-spacing: .12em; text-transform: uppercase; opacity: .9; }
+</style>
+
+<style>html{color-scheme:light}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <h1 class="brand"><img class="logo" src="assets/logo-blanco.webp" alt="como.ritual" width="900" height="249"></h1>
+    <p class="eyebrow">Experiencia clandestina · Bogotá</p>
+    <img class="fire" src="assets/llama-cuenco-crema.webp" alt="" width="586" height="720">
+    <p class="tagline">Donde la mesa es un altar y el alimento es un puente.</p>
+    <p class="hero-date">Sábado 14 de noviembre · 11 puestos</p>
+    <a class="btn" href="#reserva">Reservar mi lugar</a>
+  </div>
+</header>
+
+<main>
+  <section id="cena" class="wrap">
+    <figure class="art has-dk"><img class="lt" src="assets/ojo-cuenco.webp" alt="" width="857" height="900"><img class="dk" src="assets/ojo-cuenco-dk.webp" alt="" width="857" height="900"></figure>
+    <h2>Brujas, Chamanes y Maestros</h2>
+    <p class="lede">Una cena que no se repite. Cada cena de como.ritual nace de una intención distinta: un ingrediente ancla, un mensaje, una pregunta que la cocina intenta responder.</p>
+    <p>No hay carta ni restaurante. Hay una sola mesa, un máximo de 11 personas y comida colombiana con productos locales. El menú todavía es sorpresa.</p>
+    <p>Soy Marce, socióloga y cocinera empírica. Cocino desde el alma, desde lo que vive, desde lo que duele y lo que sana.</p>
+
+    <dl class="facts clear">
+      <div><dt>Fecha</dt><dd><b>Sábado 14 de noviembre</b></dd></div>
+      <div><dt>Llegada</dt><dd><b>6:15 p.m.</b> El ritual empieza puntual.</dd></div>
+      <div><dt>Lugar</dt><dd><b>Centro Internacional, Bogotá.</b><br><span class="note">La dirección exacta llega por WhatsApp una semana antes de la cena.</span></dd></div>
+      <div><dt>Valor</dt><dd><b>$170.000</b> por persona, con bebidas incluidas.</dd></div>
+      <div><dt>Reserva</dt><dd>Abono del 60% (<b>$102.000</b> por persona) para asegurar el cupo. El saldo de <b>$68.000</b> se paga la noche de la cena. Los cupos se confirman por orden de abono.</dd></div>
+    </dl>
+  </section>
+
+  <div class="band band-maiz" role="presentation"></div>
+
+  <section id="reserva" class="wrap">
+    <figure class="art has-dk"><img class="lt" src="assets/mano-cuchara.webp" alt="" width="886" height="900"><img class="dk" src="assets/mano-cuchara-dk.webp" alt="" width="886" height="900"></figure>
+    <h2>Reserva tu lugar</h2>
+    <p>Llena el formulario y te escribimos por WhatsApp con los datos para el abono. Si vienes acompañado, anota a todas las personas aquí para que sepamos qué cocinar para cada una.</p>
+
+    <div id="demo-note" class="demo" hidden>Vista previa: este formulario todavía no está conectado a la hoja de reservas, así que no guarda datos.</div>
+
+    <form id="rsv" novalidate>
+      <div class="field">
+        <label for="nombre">Tu nombre completo</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" required maxlength="80" placeholder=" ">
+      </div>
+      <div class="field">
+        <label for="whatsapp">Tu WhatsApp</label>
+        <input id="whatsapp" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" required maxlength="24" placeholder=" ">
+        <span class="hint">Con indicativo si estás fuera de Colombia.</span>
+      </div>
+      <div class="field">
+        <label for="personas">¿Cuántas personas reservas?</label>
+        <select id="personas" name="personas">
+          <option value="1">1 persona</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 personas</option>
+          <option value="4">4 personas</option>
+          <option value="5">5 personas</option>
+          <option value="6">6 personas</option>
+        </select>
+      </div>
+
+      <div id="guests" class="guests"></div>
+
+      <div class="field">
+        <label for="fuente">¿Cómo te enteraste?</label>
+        <select id="fuente" name="fuente">
+          <option value="">Elige una opción</option>
+          <option>Instagram</option>
+          <option>TikTok</option>
+          <option>Invitación personal</option>
+          <option>Me lo recomendó alguien</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="summary" aria-live="polite">
+        <div class="row"><span id="sum-n">1 persona</span><span id="sum-total">$170.000</span></div>
+        <div class="row"><span>Abono para asegurar tu cupo (60%)</span><span class="big" id="sum-abono">$102.000</span></div>
+        <div class="row"><small>Saldo la noche de la cena</small><small id="sum-saldo">$68.000</small></div>
+      </div>
+
+      <div class="hp" aria-hidden="true"><label for="web">Web</label><input id="web" name="web" type="text" tabindex="-1" autocomplete="off"></div>
+
+      <label class="check" for="ok"><input id="ok" type="checkbox" required><span>Acepto que como.ritual use estos datos solo para confirmar mi reserva y escribirme sobre esta cena. Las alergias se usan únicamente para cocinar.</span></label>
+
+      <p id="err" class="error" role="alert" hidden></p>
+      <button id="send" class="btn" type="submit">Enviar mi interés</button>
+    </form>
+
+    <div id="done" class="ok" hidden>
+      <div class="strip" role="presentation"></div>
+      <figure class="art"><img src="assets/tamales-hoja.webp" alt="" width="900" height="894"></figure>
+      <h2>Gracias, <span id="done-name"></span></h2>
+      <p id="done-text"></p>
+      <p class="msgbox" id="msg"></p>
+      <div class="actions">
+        <a id="wa" class="btn" href="https://wa.me/message/ZUQCTGQYRFFXP1" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+        <button id="copy" class="btn ghost" type="button">Copiar mensaje</button>
+      </div>
+      <p class="note" id="copied" hidden>Mensaje copiado. Pégalo en el chat.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot"><img class="logo" src="assets/logo-blanco.webp" alt="como.ritual" width="900" height="249" style="width:min(240px,64vw);margin-bottom:10px"><span>Bogotá · Experiencia clandestina</span>
+  <p class="cat">¿Un evento privado, una fundación o una empresa? <a href="https://wa.me/message/ZUQCTGQYRFFXP1" target="_blank" rel="noopener">Catering con intención</a></p></footer>
+
+<script>
+(function () {
+  // Pega aquí la URL de la aplicación web de Google Apps Script (termina en /exec).
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwl-CEuurS7mgjujljmGXICuKXPCy_A2b09vcRem65ThmJcuDKlC3iTwPz_Gkr0Gw0/exec";
+  var WA_LINK = "https://wa.me/message/ZUQCTGQYRFFXP1";
+  var PRICE = 170000, DEPOSIT_PCT = 0.6;
+  var fmt = new Intl.NumberFormat("es-CO", { style: "currency", currency: "COP", maximumFractionDigits: 0 });
+
+  var $ = function (id) { return document.getElementById(id); };
+  var guestsEl = $("guests"), form = $("rsv");
+  if (!SCRIPT_URL) $("demo-note").hidden = false;
+
+  function plural(n) { return n + (n === 1 ? " persona" : " personas"); }
+
+  function renderGuests() {
+    var n = parseInt($("personas").value, 10);
+    var old = [];
+    guestsEl.querySelectorAll(".guest").forEach(function (g) {
+      old.push({ name: (g.querySelector(".g-name") || {}).value || "", diet: g.querySelector(".g-diet").value });
+    });
+    guestsEl.innerHTML = "";
+    for (var i = 0; i < n; i++) {
+      var g = document.createElement("div");
+      g.className = "guest";
+      var title = i === 0 ? "Persona 1 · tú" : "Persona " + (i + 1);
+      var html = "<h3>" + title + "</h3>";
+      if (i > 0) {
+        html += '<div class="field"><label for="gn' + i + '">Nombre completo</label>' +
+                '<input class="g-name" id="gn' + i + '" type="text" required maxlength="80" placeholder=" "></div>';
+      }
+      html += '<div class="field"><label for="gd' + i + '">Alergias o restricciones alimentarias</label>' +
+              '<textarea class="g-diet" id="gd' + i + '" required maxlength="300" placeholder=" "></textarea>' +
+              '<span class="hint">Escribe “Ninguna” si no aplica.</span></div>';
+      g.innerHTML = html;
+      guestsEl.appendChild(g);
+      if (old[i]) {
+        var nm = g.querySelector(".g-name"); if (nm) nm.value = old[i].name;
+        g.querySelector(".g-diet").value = old[i].diet;
+      }
+    }
+    updateSummary(n);
+  }
+
+  function updateSummary(n) {
+    var total = PRICE * n, abono = Math.round(total * DEPOSIT_PCT);
+    $("sum-n").textContent = plural(n) + " × " + fmt.format(PRICE);
+    $("sum-total").textContent = fmt.format(total);
+    $("sum-abono").textContent = fmt.format(abono);
+    $("sum-saldo").textContent = fmt.format(total - abono);
+  }
+
+  function showError(msg) { var e = $("err"); e.textContent = msg; e.hidden = !msg; }
+
+  function collect() {
+    var n = parseInt($("personas").value, 10);
+    var nombre = $("nombre").value.trim();
+    var guests = [];
+    guestsEl.querySelectorAll(".guest").forEach(function (g, i) {
+      var nm = i === 0 ? nombre : g.querySelector(".g-name").value.trim();
+      guests.push({ nombre: nm, restricciones: g.querySelector(".g-diet").value.trim() });
+    });
+    var total = PRICE * n, abono = Math.round(total * DEPOSIT_PCT);
+    return {
+      enviado: new Date().toISOString(), cena: "2026-11-14",
+      nombre: nombre, whatsapp: $("whatsapp").value.trim(), personas: n,
+      comensales: guests, fuente: $("fuente").value,
+      total: total, abono: abono, saldo: total - abono, web: $("web").value
+    };
+  }
+
+  function validate() {
+    var bad = Array.prototype.find.call(form.querySelectorAll("input[required], textarea[required]"), function (el) {
+      return el.type === "checkbox" ? !el.checked : !el.value.trim();
+    });
+    if (bad) { bad.focus(); return bad.type === "checkbox" ? "Marca la casilla de aceptación para continuar." : "Completa todos los campos obligatorios."; }
+    var digits = $("whatsapp").value.replace(/\D/g, "");
+    if (digits.length < 7 || digits.length > 15) { $("whatsapp").focus(); return "Revisa tu número de WhatsApp: parece incompleto."; }
+    return "";
+  }
+
+  function finish(data) {
+    var n = data.personas;
+    $("done-name").textContent = data.nombre.split(" ")[0];
+    $("done-text").textContent = "Recibimos tu interés para " + plural(n) + ". Escríbenos por WhatsApp para recibir los datos de pago. Con el abono de " + fmt.format(data.abono) + " confirmamos tu lugar, por orden de abono.";
+    $("msg").textContent = "Hola, soy " + data.nombre + ". Llené el formulario para la cena del 14 de noviembre (" + plural(n) + ").";
+    form.hidden = true; $("done").hidden = false;
+    $("done").scrollIntoView({ block: "start" });
+  }
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    showError("");
+    var problem = validate();
+    if (problem) { showError(problem); return; }
+    var data = collect();
+    if (data.web) { finish(data); return; } // campo trampa: un bot lo llenó
+    var btn = $("send"); btn.disabled = true; btn.textContent = "Enviando…";
+    if (!SCRIPT_URL) { setTimeout(function () { finish(data); }, 400); return; }
+    fetch(SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(data) })
+      .then(function () { finish(data); })
+      .catch(function () {
+        btn.disabled = false; btn.textContent = "Enviar mi interés";
+        showError("No pudimos enviar el formulario. Revisa tu conexión o escríbenos directamente por WhatsApp.");
+      });
+  });
+
+  $("personas").addEventListener("change", renderGuests);
+
+  $("copy").addEventListener("click", function () {
+    var text = $("msg").textContent;
+    function ok() { $("copied").hidden = false; }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents($("msg"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      try { document.execCommand("copy"); ok(); } catch (e) {}
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, fallback);
+    else fallback();
+  });
+
+  renderGuests();
+})();
+</script>
+
+</body>
+</html>
