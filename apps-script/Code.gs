@@ -103,9 +103,12 @@ function doPost(e) {
       guests, total, abono, total - abono,
       clean_(d.fuente, 40), 'Interesada', false, ''
     ];
-    sh.appendRow(row);
+    // Primera fila realmente vacía (las casillas de "Abono recibido" no cuentan como datos)
+    var r = nextRow_(sh);
+    sh.getRange(r, 1, 1, row.length).setValues([row]);
+    sh.getRange(r, 1).setNumberFormat('dd/mm/yyyy hh:mm');
     // WhatsApp como texto para no perder el + ni ceros
-    sh.getRange(sh.getLastRow(), 4).setNumberFormat('@').setValue(phone_(d.whatsapp));
+    sh.getRange(r, 4).setNumberFormat('@').setValue(phone_(d.whatsapp));
 
     if (NOTIFY_BY_EMAIL) {
       MailApp.sendEmail(Session.getEffectiveUser().getEmail(),
@@ -118,6 +121,13 @@ function doPost(e) {
   } finally {
     lock.releaseLock();
   }
+}
+
+/** Siguiente fila vacía según la columna A (fecha de registro). */
+function nextRow_(sh) {
+  var v = sh.getRange(1, 1, sh.getMaxRows(), 1).getValues();
+  for (var i = v.length - 1; i >= 0; i--) { if (v[i][0] !== '') return i + 2; }
+  return 2;
 }
 
 function doGet() { return json_({ ok: true, service: 'como.ritual reservas' }); }
